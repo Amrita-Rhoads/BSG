@@ -35,8 +35,11 @@ class Card:
         deck - the deck associated with this card.
         text - the text printed on the card.
     """
-    def __init__(self):
+    def __init__(self, game):
         self.expansion = "Base"
+        self.game = game
+        self.deck = None
+        self.text = None
 
 
 class SkillCard(Card):
@@ -46,6 +49,7 @@ class SkillCard(Card):
     Attributes:
         expansion - the expansion associated with this card.
         game - the game associated with this card.
+        deck - the deck this card belongs to.
         type - the type of skill card this is.
         value - the value in skill checks.
         text - the text printed on this card.
@@ -154,10 +158,19 @@ class Character:
             raise InvalidMoveError("Cannot move to a hazardous location!")
         elif location.is_human != player.is_human:
             raise InvalidMoveError("Not accessible to your allegiance!")
+        elif location.ship != self.location.ship:
+            pass #TODO: make this enforce discarding a card.
         else:
             self.location = location
 
-    def draw(self):
+    def draw(self, deck, n):
+        """
+        Draw an arbitrary number of cards from a deck
+
+        Parameters:
+            deck - the deck to draw from
+            n - the number of cards to draw
+        """
         pass
 
     def discard(self, cards):
@@ -165,6 +178,68 @@ class Character:
         Discard an arbitrary number of cards.
         """
         pass
+
+    def discard_random(self):
+        pass
+
+    def roll_die(self):
+        pass_args
+
+    def take_turn(self):
+        pass
+
+    def use_loc(self):
+        """
+        Use the location the character is at.
+        """
+        pass
+
+    def use_skill_card(self):
+        pass
+
+    def use_quorum_card(self):
+        pass
+
+    def use_admiral_card(self):
+        pass
+
+    def resolve_crisis(self):
+        pass
+
+    def make_crisis_choice(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class LauraRoslin(Character):
+    def __init__(self):
+        pass
+
+    def use_loc(self):
+        pass
+
+    def resolve_crisis(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class GaiusBaltar(Character):
+    def __init__(self):
+        pass
+
+    def draw(self):
+        pass
+
+    def resolve_crisis(self):
+        pass
+        # He draws a skill card after
+
+    def miracle(self):
+
 
 
 ### Locations.
@@ -208,6 +283,102 @@ class Location:
         return to_ret
 
 
+class TomZarek(Character):
+    # Todo: update Administration/Brig to reflect his ability.
+    def __init__(self):
+        pass
+
+    def use_loc(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class LeeAdama(Character):
+    # TODO: change action to allow Lee to jump aboard.
+    def __init__(self):
+        pass
+
+    def discard(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class WilliamAdama(Character):
+    def __init__(self):
+        pass
+
+    def resolve_crisis(self):
+        pass
+
+    def use_loc(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class KarlAgathon(Character):
+    # TODO: allow miracle in crisis resolution.
+    # TODO: strand for first round.
+    def __init__(self):
+        pass
+
+    def roll_die(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class GalenTyrol(Character):
+    # Todo: implement miracle.
+    # Todo: make end of round discard limit different for him.
+    def __init__(self):
+        pass
+
+    def use_skill_card(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class SharonValerii(Character):
+    # Todo: skill check modification.
+    def __init__(self):
+        pass
+
+    def draw(self):
+        pass
+
+    def resolve_crisis(self):
+        pass
+
+
+class SaulTigh(Character):
+    # Todo: modify Admiral's quarters to reflect.
+    # Todo: modify start of turn to reflect.
+    def __init__(self):
+        pass
+
+    def miracle(self):
+        pass
+
+
+class KaraThrace(Character):
+    # Todo: modify resolve skill check to allow her to discard.
+    # Todo: modify admiral's quarters.
+    def __init__(self):
+        pass
+
+    def take_turn(self):
+        pass
+
+
 class FTL(Location):
     """
     An FTL in a game.
@@ -233,7 +404,7 @@ class FTL(Location):
         self.text = read_message("text/loc_desc/ftl.txt")
         self.action = self.ftl_jump
 
-    def ftl_jump(self):
+    def ftl_jump(self, character):
         """
         Jump using FTL.
         """

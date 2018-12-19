@@ -79,7 +79,9 @@ dispatcher.add_handler(newgame_handler)
 dispatcher.add_handler(joingame_handler)
 dispatcher.add_handler(endgame_handler)
 
+# Memes
 dispatcher.add_handler(CommandHandler('hi', (lambda bot, update : bot.send_message(chat_id=update.message.chat.id, text="/hi")) ))
-
+dispatcher.add_handler(CommandHandler('wee', (lambda bot, update : bot.send_message(chat_id=update.message.chat.id, text="/hoo")) ))
+dispatcher.add_handler(CommandHandler('hoo', (lambda bot, update : bot.send_message(chat_id=update.message.chat.id, text="/wee")) ))
 
 updater.start_polling()
