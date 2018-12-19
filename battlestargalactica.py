@@ -131,14 +131,14 @@ class Character:
         is_human - True if character is not a revealed Cylon.
         miracle_tokens - The number of miracle tokens remaining.
     """
+    self.expansion = "Base"
+    self.group = None
+    self.name = "Character McCharacterface"
+    self.draw = np.zeros((5, 5))
+    self.text = "This page intentionally left blank."
     def __init__(self, game, player):
-        self.expansion = "Base"
         self.game = game
         self.player = player
-        self.group = None
-        self.name = "Character McCharacterface"
-        self.draw = np.zeros((5, 5))
-        self.text = "This page intentionally left blank."
         self.location = None
         self.is_human = True
         self.miracle_tokens = 1
@@ -214,8 +214,11 @@ class Character:
 
 
 class LauraRoslin(Character):
-    def __init__(self):
-        pass
+    self.group = "Politics"
+    self.name = "Laura Roslin"
+    def __init__(self, game, player):
+        Character.__init__(self, game, player)
+        self.location = self.game.board.locations["President's Office"]
 
     def use_loc(self):
         pass
@@ -379,6 +382,46 @@ class KaraThrace(Character):
         pass
 
 
+### Locations.
+class Location:
+    """
+    A location in Battlestar Galactica.
+    Attributes:
+        expansion - the expansion associated with this location.
+        game - the Game instance associated with this location.
+        ship - the ship this location is on.
+        name - the name of this location.
+        text - the text on this location card.
+        players - a list of players currently present there.
+        action - the action that can be taken at that location.
+        is_hazardous - whether a location can be moved to.
+        is_damaged - whether this location is damaged.
+        is_human - False if this location is accessible to revealed Cylons.
+    """
+    def __init__(self, game):
+        self.expansion = "Base"
+        self.game = game
+        self.ship = "Galactica"
+        self.name = "Location McLocationface"
+        self.text = "Blank location."
+        self.players = []
+        self.action = None
+        self.is_hazardous = False
+        self.is_damaged = False
+        self.is_human = True
+
+    def __str__(self):
+        to_ret = self.name
+        if self.is_damaged:
+            to_ret += " (Damaged)"
+        to_ret += ":"
+        to_ret += self.text
+        if self.players:
+            to_ret += "\n Players present: "
+            to_ret += " ".join(players)
+        return to_ret
+
+
 class FTL(Location):
     """
     An FTL in a game.
@@ -463,32 +506,6 @@ class Weapons(Location):
         pass
 
 
-class Command(Location):
-    """
-    A Command location.
-
-   Attributes:
-        expansion - 'Base'
-        game - the Game instance associated with this location.
-        ship - 'Galactica'
-        name - 'Command'
-        text - the text on this location card.
-        players - a list of players currently present there.
-        action - the action that can be taken at that location.
-        is_hazardous - whether a location can be moved to.
-        is_damaged - whether this location is damaged.
-        is_human - False if this location is accessible to revealed Cylons.
-    """
-    def __init__(self, game):
-        Location.__init__(self, game)
-        self.name = "Command"
-        self.txt = read_message("text/loc_desc/command.txt")
-        self.action = self.command
-
-    def command(self):
-        pass
-
-
 class Board:
     """
     A board for Battlestar Galactica.
@@ -510,6 +527,7 @@ class Game:
 
     Attributes:
         bot - the bot associated with this game.
+        board - the board associated with this game.
         players - a list of Player objects.
         spectators - a dictionary of player ids and names spectating.
         is_ongoing - True if the game has started.
