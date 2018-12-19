@@ -1,0 +1,1 @@
+Action: Choose a character, then pass this Skill Check to send them to the Brig.

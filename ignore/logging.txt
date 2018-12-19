@@ -1,0 +1,122 @@
+2018-12-18 19:56:18,186 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 36, in new_game
+    chat_data["game"] = bsg.Game(bot)
+NameError: name 'bsg' is not defined
+2018-12-18 19:56:22,641 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 48, in join_game
+    chat_data["game"].add_player(update.message.from_user.id,
+KeyError: 'game'
+2018-12-18 19:59:06,863 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 36, in new_game
+    chat_data["game"] = bsg.Game(bot)
+NameError: name 'bsg' is not defined
+2018-12-18 20:00:50,019 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 41, in new_game
+    reply(bot, update, chat_data["game"])
+  File ".\battlestargalactica_bot.py", line 27, in reply
+    bot.send_message(chat_id=update.message.chat_id, text=text)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 60, in decorator
+    result = func(self, *args, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 85, in decorator
+    result = self._request.post(url, data, timeout=kwargs.get('timeout'))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\utils\request.py", line 267, in post
+    data = json.dumps(data)
+  File "C:\ProgramData\Anaconda3\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'Game' is not JSON serializable
+2018-12-18 20:00:54,565 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 50, in join_game
+    update.message.from_user.first_name)
+  File "C:\Users\Amrita\Projects\BSG\battlestargalactica.py", line 363, in add_player
+    if game.is_ongoing:
+NameError: name 'game' is not defined
+2018-12-18 20:01:46,964 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 41, in new_game
+    reply(bot, update, chat_data["game"])
+  File ".\battlestargalactica_bot.py", line 27, in reply
+    bot.send_message(chat_id=update.message.chat_id, text=text)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 60, in decorator
+    result = func(self, *args, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 85, in decorator
+    result = self._request.post(url, data, timeout=kwargs.get('timeout'))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\utils\request.py", line 267, in post
+    data = json.dumps(data)
+  File "C:\ProgramData\Anaconda3\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'Game' is not JSON serializable
+2018-12-18 20:01:54,687 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 41, in new_game
+    reply(bot, update, chat_data["game"])
+  File ".\battlestargalactica_bot.py", line 27, in reply
+    bot.send_message(chat_id=update.message.chat_id, text=text)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 60, in decorator
+    result = func(self, *args, **kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\bot.py", line 85, in decorator
+    result = self._request.post(url, data, timeout=kwargs.get('timeout'))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\utils\request.py", line 267, in post
+    data = json.dumps(data)
+  File "C:\ProgramData\Anaconda3\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\ProgramData\Anaconda3\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'Game' is not JSON serializable
+2018-12-18 20:01:59,190 - telegram.ext.dispatcher - ERROR -An uncaught error was raised while processing the update
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\dispatcher.py", line 279, in process_update
+    handler.handle_update(update, self)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\telegram\ext\commandhandler.py", line 170, in handle_update
+    return self.callback(dispatcher.bot, update, **optional_args)
+  File ".\battlestargalactica_bot.py", line 49, in join_game
+    chat_data["game"].add_player(update.message.from_user.id,
+AttributeError: 'NoneType' object has no attribute 'add_player'
